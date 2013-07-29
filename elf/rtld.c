@@ -588,7 +588,6 @@ struct map_args
   /* Argument to map_doit.  */
   char *str;
   struct link_map *loader;
-  int is_preloaded;
   int mode;
   /* Return value of map_doit.  */
   struct link_map *map;
@@ -626,16 +625,17 @@ static void
 map_doit (void *a)
 {
   struct map_args *args = (struct map_args *) a;
-  args->map = _dl_map_object (args->loader, args->str,
-			      args->is_preloaded, lt_library, 0, args->mode,
-			      LM_ID_BASE);
+  args->map = _dl_map_object (args->loader, args->str, lt_library, 0,
+			      args->mode, LM_ID_BASE);
 }
 
 static void
 dlmopen_doit (void *a)
 {
   struct dlmopen_args *args = (struct dlmopen_args *) a;
-  args->map = _dl_open (args->fname, RTLD_LAZY | __RTLD_DLOPEN | __RTLD_AUDIT,
+  args->map = _dl_open (args->fname,
+			(RTLD_LAZY | __RTLD_DLOPEN | __RTLD_AUDIT
+			 | __RTLD_SECURE),
 			dl_main, LM_ID_NEWLM, _dl_argc, INTUSE(_dl_argv),
 			__environ);
 }
@@ -805,8 +805,7 @@ do_preload (char *fname, struct link_map *main_map, const char *where)
 
   args.str = fname;
   args.loader = main_map;
-  args.is_preloaded = 1;
-  args.mode = 0;
+  args.mode = __RTLD_SECURE;
 
   unsigned int old_nloaded = GL(dl_ns)[LM_ID_BASE]._ns_nloaded;
 
@@ -1052,7 +1051,6 @@ of this helper program; chances are you did not intend to run this program.\n\
 
 	  args.str = rtld_progname;
 	  args.loader = NULL;
-	  args.is_preloaded = 0;
 	  args.mode = __RTLD_OPENEXEC;
 	  (void) _dl_catch_error (&objname, &err_str, &malloced, map_doit,
 				  &args);
@@ -1064,7 +1062,7 @@ of this helper program; chances are you did not intend to run this program.\n\
       else
 	{
 	  HP_TIMING_NOW (start);
-	  _dl_map_object (NULL, rtld_progname, 0, lt_library, 0,
+	  _dl_map_object (NULL, rtld_progname, lt_library, 0,
 			  __RTLD_OPENEXEC, LM_ID_BASE);
 	  HP_TIMING_NOW (stop);
 
@@ -1090,10 +1088,14 @@ of this helper program; chances are you did not intend to run this program.\n\
       main_map = _dl_new_object ((char *) "", "", lt_executable, NULL,
 				 __RTLD_OPENEXEC, LM_ID_BASE);
       assert (main_map != NULL);
-      assert (main_map == GL(dl_ns)[LM_ID_BASE]._ns_loaded);
       main_map->l_phdr = phdr;
       main_map->l_phnum = phnum;
       main_map->l_entry = *user_entry;
+
+      /* Even though the link map is not yet fully initialized we can add
+	 it to the map list since there are no possible users running yet.  */
+      _dl_add_to_namespace_list (main_map, LM_ID_BASE);
+      assert (main_map == GL(dl_ns)[LM_ID_BASE]._ns_loaded);
 
       /* At this point we are in a bit of trouble.  We would have to
 	 fill in the values for l_dev and l_ino.  But in general we
@@ -1237,7 +1239,7 @@ of this helper program; chances are you did not intend to run this program.\n\
       /* We were invoked directly, so the program might not have a
 	 PT_INTERP.  */
       _dl_rtld_libname.name = GL(dl_rtld_map).l_name;
-      /* _dl_rtld_libname.next = NULL; 	Already zero.  */
+      /* _dl_rtld_libname.next = NULL;	Already zero.  */
       GL(dl_rtld_map).l_libname =  &_dl_rtld_libname;
     }
   else
@@ -1361,6 +1363,9 @@ of this helper program; chances are you did not intend to run this program.\n\
 		_dl_fatal_printf ("out of memory\n");
 	      l->l_libname->name = memcpy (copy, dsoname, len);
 	    }
+
+	  /* Add the vDSO to the object list.  */
+	  _dl_add_to_namespace_list (l, LM_ID_BASE);
 
 	  /* Rearrange the list so this DSO appears after rtld_map.  */
 	  assert (l->l_next == NULL);

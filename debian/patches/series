@@ -1,4 +1,4 @@
-#svn-updates.diff
+svn-updates.diff
 
 locale/check-unknown-symbols.diff
 locale/fix-LC_COLLATE-rules.diff
@@ -64,7 +64,7 @@ amd64/local-biarch.diff
 amd64/local-clone.diff
 amd64/local-linuxthreads-gscope.diff
 amd64/submitted-tst-audit6-avx.diff
-amd64/cvs-avx-tcb-alignment.diff
+amd64/cvs-avx-detection.diff
 
 arm/local-atomic.diff
 arm/local-eabi-wchar.diff
@@ -73,6 +73,7 @@ arm/local-lowlevellock.diff
 arm/local-no-hwcap.diff
 arm/local-hwcap-updates.diff
 arm/local-sigaction.diff
+arm/cvs-tls-unallocated.diff
 
 hppa/local-inlining.diff
 hppa/local-linuxthreads.diff
@@ -126,11 +127,9 @@ hurd-i386/cvs-getcwd.diff
 hurd-i386/cvs-setsid.diff
 hurd-i386/local-locarchive.diff
 hurd-i386/submitted-regex_internal.diff
-hurd-i386/cvs-linkat.diff
 hurd-i386/cvs-ttyname.diff
 hurd-i386/cvs-getnprocs.diff
 hurd-i386/local-mkdir_root.diff
-hurd-i386/cvs-select.diff
 hurd-i386/local-i686.diff
 hurd-i386/local-no-hp-timing.diff
 hurd-i386/cvs-sched_param.diff
@@ -166,6 +165,7 @@ mips/cvs-non-pic-n32-64-syscall.diff
 mips/local-lowlevellock.diff
 mips/local-r10k.diff
 mips/submitted-rld_map.diff
+mips/cvs-tls-unallocated.diff
 
 s390/cvs-makecontext.diff
 s390/submitted-nexttowardf.diff
@@ -177,7 +177,6 @@ sparc/local-fork.diff
 sparc/local-sparcv9-target.diff
 sparc/submitted-timing.diff
 sparc/cvs-sparcv9-memchr.diff
-sparc/submitted-epoll.diff
 sparc/submitted-msgrcv.diff
 
 all/local-alias-UTF-8.diff
@@ -239,7 +238,6 @@ any/submitted-getaddrinfo-lo.diff
 any/local-getaddrinfo-interface.diff
 any/submitted-autotools.diff
 any/submitted-accept4-hidden.diff
-any/submitted-etc-resolv.conf.diff
 any/submitted-localedef-mmap.diff
 any/submitted-missing-etc-hosts.diff
 any/submitted-bits-fcntl_h-at.diff
@@ -261,11 +259,19 @@ any/cvs-glob.diff
 any/local-dlfptr.diff
 any/submitted-string2-strcmp.diff
 any/submitted-group_member.diff
-any/cvs-redirect-throw.diff
-#any/cvs-flush-cache-textrels.diff
 any/cvs-__block.diff
 any/cvs-sunrpc-license.diff
 any/submitted-resolv.conf-thread.diff
-any/cvs-audit-suid.diff
-any/cvs-dont-expand-dst-twice.diff
 any/cvs-ignore-origin-privileged.diff
+any/cvs-resolv-different-nameserver.diff
+any/submitted-resolv-assert.diff
+any/cvs-getaddrinfo-single-lookup.diff
+any/cvs-pthread-setgroups.diff
+any/cvs-dl_close-scope-handling.diff
+any/cvs-nptl-pthread-race.diff
+any/cvs-statvfs-mount-flags.diff
+any/cvs-tzfile.diff
+any/submitted-resolv-first-query-failure.diff
+any/cvs-dlopen-tls.diff
+any/cvs-FORTIFY_SOURCE-format-strings.diff
+any/local-sunrpc-dos.diff

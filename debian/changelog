@@ -1,3 +1,97 @@
+eglibc (2.11.3-4) stable; urgency=low
+
+  * Enable patches/any/cvs-dlopen-tls.diff, not enabled by mistake.  Closes:
+    #637239.
+  * patches/any/cvs-FORTIFY_SOURCE-format-strings.diff: new patch from
+    upstream to fix FORTIFY_SOURCE format string protection bypass.  Closes:
+    #660611.
+  * patches/any/local-sunrpc-dos.diff: fix a DoS in RPC implementation
+    (CVE-2011-4609).  Closes: #671478.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Wed, 06 Jun 2012 18:03:02 +0200
+
+eglibc (2.11.3-3) stable; urgency=low
+
+  * patches/any/cvs-tzfile.diff: fix integer overflow in timezone code.
+    (CVE-2009-5029).  Closes: #650790.
+  * patches/any/submitted-resolv-first-query-failure.diff: new patch to fix
+    resolving issues with broken servers returning NOTIMP or FORMERR to AAAA
+    queries.  Closes: #658171.
+  * local/manpages/gai.conf.5: update from latest RedHat version.  Closes:
+    #659504.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Thu, 02 Feb 2012 22:20:02 +0100
+
+eglibc (2.11.3-2) stable; urgency=low
+
+  * Add patches/arm/cvs-tls-unallocated.diff and
+    patches/mips/cvs-tls-unallocated.diff to fix FTBFS on armel, mips
+    and mipsel.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 17 Dec 2011 02:09:58 +0100
+
+eglibc (2.11.3-1) stable; urgency=low
+
+  * Update from stable upstream version, and update from the upstream 
+    stable branch:
+    - fix wrong memmove/bcopy optimization with gcc-4.6.  Closes: #619963.
+    - fix an integer overflow in fnmatch() (CVE-2011-1659).  Closes: #626370.
+    - fix spurious warning in bswap_16() with -Wconversion.  Closes: #561249.
+    - fix auxiliary cache file creation.  Closes: #588218.
+    - fix memory corruption in fnmatch() that can lead to code execution 
+      (CVE-2011-1071).  Closes: #615120
+    - fix strchr() on x86-64 CPU with SSE4.2.  Closes: #635885
+  * Update patches:
+    - patches/locale/locale-print-LANGUAGE.diff
+    - patches/hppa/local-stack-grows-up.diff
+    - patches/m68k/cvs-tls-support.patch
+    - patches/any/local-disable-test-tgmath2.diff
+    - patches/any/submitted-longdouble.diff
+    - patches/any/submitted-bits-fcntl_h-at.diff
+    - patches/kfreebsd/local-readdir_r.diff
+  * Drop obsolete patches:
+    - patches/any/cvs-redirect-throw.diff
+    - patches/any/cvs-flush-cache-textrels.diff
+    - patches/hurd-i386/cvs-linkat.diff
+    - patches/hurd-i386/cvs-select.diff
+    - patches/sparc/submitted-epoll.diff
+    - patches/any/cvs-dont-expand-dst-twice.diff
+    - patches/amd64/cvs-avx-tcb-alignment.diff
+    - patches/any/submitted-etc-resolv.conf.diff
+    - patches/any/cvs-audit-suid.diff
+  * kfreebsd/local-sysdeps.diff, update to r3763 (from squeeze glibc-bsd).
+    - fixes LD_PRELOAD with a kfreebsd-9 kernel. Closes: #630695.
+    - uses upstream RFTSIGZMB for exit signal selection when available.
+    - fixes a crash in if_nameindex() with more than 3 interfaces.
+    - alter faccessat() X_OK tests similarly as access(). See #640334.
+    - fix __libc_sa_len() for AF_LOCAL. See #645527.
+  * Fix preinst script wrt 3.0 kernel. Patch by Colin Watson.  Closes: 
+    #630077.
+  * Update submitted-resolv.conf-thread.diff from upstream to fix a 
+    deadlock in some rare cases.
+  * Add patches/any/cvs-resolv-different-nameserver.diff and
+    patches/any/submitted-resolv-assert.diff to try a different
+    nameserver if the first one returns REFUSED.  Closes: #535504.
+  * Add patches/any/cvs-getaddrinfo-single-lookup.diff to fix fallback to
+    single lookup dns requests.  Closes: #541167.
+  * Add patches/any/cvs-pthread-setgroups.diff to fix setgroups() with
+    multiple threads.
+  * Add debian/patches/cvs-dl_close-scope-handling.diff from upstream to
+    fix issues with dl_close() when resolving locally-defined symbols.
+    Closes: #625250.
+  * patches/i386/local-cpuid-level2.diff: fix a typo.  Closes: #609389.
+  * patches/any/cvs-nptl-pthread-race.diff: fix a race in NPTL code that
+    sometimes causes a deadlock when calling fork() from a thread.
+  * patches/amd64/cvs-avx-detection.diff: do not use AVX if hardware support
+    is present, but not enabled in the kernel.  Closes: #646549.
+  * patches/any/cvs-statvfs-mount-flags.diff: get the mount flags directly
+    from the kernel when possible instead of parsing /proc/mounts.  Closes: 
+    #639897.
+  * patches/any/cvs-dlopen-tls.diff:  fix handling of static TLS in
+    dlopen'ed objects.  Closes: #637239.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 13 Dec 2011 11:23:12 +0100
+
 eglibc (2.11.2-10) unstable; urgency=low
 
   * Add patches/amd64/cvs-avx-tcb-alignment.diff from upstream to fix 
