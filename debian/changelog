@@ -1,3 +1,17 @@
+eglibc (2.11.3-4+deb6u1) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Squeeze LTS Team. 
+  * Apply upstream patch to fix buffer overflow in __gconv_translit_find.
+    (CVE-2014-5119)
+  * debian/patches/any/submitted-CVE-2014-0475.diff: setlocale security fix.
+  * debian/patches/any/submitted-setlocale-alloca: Additional setlocale
+    hardening.
+  * as there seems to be no __glibc_unlikely available in Squeeze,
+    replace all "__glibc_unlikely (cond)" by "(cond)" in the patches
+    as it is only in locale handling, this should be no problem
+ 
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 31 Aug 2014 14:03:02 +0200
+
 eglibc (2.11.3-4) stable; urgency=low
 
   * Enable patches/any/cvs-dlopen-tls.diff, not enabled by mistake.  Closes:
