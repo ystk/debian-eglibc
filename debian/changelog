@@ -1,3 +1,11 @@
+eglibc (2.11.3-4+deb6u3) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Squeeze LTS Team. 
+  * CVE-2014-9402: 
+    Avoid infinite loop in nss_dns getnetbyname [BZ #17630]
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Mon, 22 Dec 2014 15:03:00 +0100
+
 eglibc (2.11.3-4+deb6u2) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Squeeze LTS Team. 
