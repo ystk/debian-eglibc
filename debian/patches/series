@@ -286,3 +286,4 @@ any/submitted-CVE-2014-6040.patch
 any/submitted-CVE-2014-7817.patch
 #
 any/submitted-CVE-2014-9402.patch
+any/cvs-gethostbyname.diff

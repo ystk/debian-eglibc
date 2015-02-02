@@ -1,3 +1,11 @@
+eglibc (2.11.3-4+deb6u4) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Squeeze LTS team.
+  * debian/patches/any/cvs-gethostbyname.diff: new patch from upstream
+    to fix a buffer overflow in gethostbyname (CVE-2015-0235). 
+
+ -- Holger Levsen <holger@debian.org>  Tue, 27 Jan 2015 23:57:55 +0100
+
 eglibc (2.11.3-4+deb6u3) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Squeeze LTS Team. 
