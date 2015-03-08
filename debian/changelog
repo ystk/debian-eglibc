@@ -1,3 +1,50 @@
+eglibc (2.11.3-4+deb6u5) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Squeeze LTS team
+  * debian/patches/any/cvs-vfprintf-many-format-strings.diff: patch from
+    upstream to fix a FORTIFY_SOURCE format string protection bypass
+    (CVE-2012-3405)
+  * debian/patches/any/cvs-strtod-overflow.diff: patch from upstream to fix
+    an integer/buffer overflow in strtod() (CVE-2012-3480)
+  * debian/patches/any/cvs-CVE-2012-44xx.diff: backport overflow fixes in
+    strcoll (CVE-2012-4412, CVE-2012-4424)
+  * debian/patches/any/cvs-CVE-2013-0242.diff: backport buffer overrun fix in
+    regexp matcher (CVE-2013-0242)
+  * debian/patches/any/cvs-CVE-2013-1914.diff: backport stack overflow fixes
+    in getaddrinfo() (CVE-2013-1914)
+  * debian/patches/any/cvs-CVE-2013-4237.diff: backport buffer overwrite fix
+    in readdir_r for file systems returning file names longer than NAME_MAX
+    characters (CVE-2013-4237)
+  * debian/patches/any/cvs-CVE-2013-4332.diff: backport integer overflow
+    fixes in pvalloc, valloc, posix_memalign, memalign and aligned_alloc
+    functions (CVE-2013-4332)
+  * debian/patches/any/cvs-CVE-2013-4458.diff: backport stack (frame)
+    overflow fixes in getaddrinfo() when called with AF_INET6 (CVE-2013-4458)
+  * debian/patches/any/cvs-CVE-2013-4788.diff: backport patch to fix
+    PTR_MANGLE ineffectivity for statically linked binaries (CVE-2013-4788).
+    *** Note that static binaries need to be recompiled to take advantage
+    of the fix ***
+  * debian/patches/any/cvs-resolv-reuse-fd.diff: upstream patch to fix
+    invalid file descriptor reuse while sending DNS query (CVE-2013-7423)
+  * debian/patches/any/cvs-CVE-2013-4357.diff: upstream patch to fix stack
+    overflow issues (CVE-2013-4357)
+  * debian/patches/any/cvs-vfscanf.diff: upstream patch to fix segfault in
+    sscanf for large decimal input string
+  * debian/patches/any/cvs-wscanf.diff: upstream patch to fix a heap buffer
+    overflow in wscanf (CVE-2015-1472, CVE-2015-1473)
+  * debian/patches/any/cvs-vfprintf.diff: upstream patch to fix a stack
+    overflow in vfprintf (CVE-2012-3406)
+  * debian/patches/any/cvs-posix_spawn_file_actions_addopen.diff: upstream
+    patch to fix a vulnerability in posix_spawn_file_actions_addopen
+    (CVE-2014-4043)
+  * debian/patches/any/cvs-getaddrinfo-idn.diff: upstream patch to fix an
+    invalid-free when using getaddrinfo with IDN (CVE-2013-7424)
+  * debian/patches/all/cvs-increase-nptl-test-case-buffer-size.patch:
+    Increase nptl test case buffer size so we really block on current Linux
+    kernels
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Thu, 05 Mar 2015 20:09:21 +0000
+
 eglibc (2.11.3-4+deb6u4) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Squeeze LTS team.
