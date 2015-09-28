@@ -1,3 +1,17 @@
+eglibc (2.11.3-4+deb6u7) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Debian LTS team.
+  * Add submitted-CVE-2015-XXXX-Ignore-LD_POINTER_GUARD-for-set-user-ID-set-group-ID.diff
+    Fix Glibc Pointer guarding weakness
+  * Add submitted-CVE-2015-XXXX-Fix-_IO_wstr_overflow-integer-overflow.diff
+    Fix _IO_wstr_overflow integer overflow
+  * Add submitted-CVE-2015-XXXX-potential-application-crash-due-to-overread-in-fnmatch.diff
+    Fix potential application crash due to overread in fnmatch
+  * Add submitted-CVE-2014-8121.diff
+    CVE-2014-8121: Do not close NSS files database during iteration
+
+ -- Guido Günther <agx@sigxcpu.org>  Sat, 26 Sep 2015 21:24:24 +0200
+
 eglibc (2.11.3-4+deb6u6) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Debian LTS team.

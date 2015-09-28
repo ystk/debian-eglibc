@@ -306,3 +306,7 @@ any/cvs-posix_spawn_file_actions_addopen.diff
 any/cvs-getaddrinfo-idn.diff
 all/cvs-increase-nptl-test-case-buffer-size.patch
 any/CVE-2015-1781.patch
+any/submitted-CVE-2015-XXXX-Ignore-LD_POINTER_GUARD-for-set-user-ID-set-group-ID.diff
+any/submitted-CVE-2015-XXXX-Fix-_IO_wstr_overflow-integer-overflow.diff
+any/submitted-CVE-2015-XXXX-potential-application-crash-due-to-overread-in-fnmatch.diff
+any/submitted-CVE-2014-8121.diff
