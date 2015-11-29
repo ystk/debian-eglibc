@@ -1,3 +1,12 @@
+eglibc (2.11.3-4+deb6u8) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Debian LTS team.
+  * debian/patches/any/cvs-bugzilla-16009-strxfrm-buffer-overflows.diff: patch
+    from upstream to fix memory allocations issues that can lead to buffer
+    overflows on the stack. Closes: #803927
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Thu, 26 Nov 2015 09:49:29 +0100
+
 eglibc (2.11.3-4+deb6u7) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Debian LTS team.

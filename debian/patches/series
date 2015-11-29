@@ -310,3 +310,4 @@ any/submitted-CVE-2015-XXXX-Ignore-LD_POINTER_GUARD-for-set-user-ID-set-group-ID
 any/submitted-CVE-2015-XXXX-Fix-_IO_wstr_overflow-integer-overflow.diff
 any/submitted-CVE-2015-XXXX-potential-application-crash-due-to-overread-in-fnmatch.diff
 any/submitted-CVE-2014-8121.diff
+any/cvs-bugzilla-16009-strxfrm-buffer-overflows.diff
