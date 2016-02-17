@@ -318,3 +318,5 @@ any/cvs-CVE-2015-8778-1-squeeze.patch
 any/cvs-CVE-2015-8778-2-squeeze.patch
 any/cvs-CVE-2015-8779-1-squeeze.patch
 any/cvs-CVE-2015-8779-2-squeeze.patch
+any/cvs-gethostbyname4-memory-leak.diff
+any/local-CVE-2015-7547.diff

@@ -1,3 +1,18 @@
+eglibc (2.11.3-4+deb6u11) squeeze-lts; urgency=medium
+
+  * debian/debhelper.in/libc.templates: revert changes from previous upload.
+    It's better to have a slightly wrong message than an untranslated one.
+  * patches/any/cvs-CVE-2014-9761-2-squeeze.patch: fix versioning of
+    __strtof_nan, __strtod_nan and __strtold_nan. These symbols are NOT
+    public, will never be in future versions and thus should not be used.
+  * patches/any/cvs-gethostbyname4-memory-leak.diff: new patch from
+    upstream to fix a memory leak in _nss_dns_gethostbyname4_r with big
+    DNS answers.
+  * patches/any/local-CVE-2015-7547.diff: new patch to fix glibc getaddrinfo
+    stack-based buffer overflow (CVE-2015-7547).
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 15 Feb 2016 15:42:38 +0100
+
 eglibc (2.11.3-4+deb6u10) squeeze-lts; urgency=medium
 
   * debhelper.in/libc.{preinst,postinst}: update preversion when upgrading to
