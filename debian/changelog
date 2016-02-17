@@ -1,3 +1,25 @@
+eglibc (2.11.3-4+deb6u10) squeeze-lts; urgency=medium
+
+  * debhelper.in/libc.{preinst,postinst}: update preversion when upgrading to
+    check services and restart them.
+  * Update debhelper.in/libc.templates.
+
+ -- Santiago Ruano Rincón <santiagorr@riseup.net>  Mon, 08 Feb 2016 18:50:39 +0100
+
+eglibc (2.11.3-4+deb6u9) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Squeeze LTS Team.
+  * Fix CVE-2014-9761: Unbounded stack allocation in nan* functions.
+    Closes: #813187.
+  * Fix CVE-2015-8776: Segmentation fault caused by passing out-of-range data
+    to strftime(). Closes: #812445.
+  * Fix CVE-2015-8778: Integer overflow in hcreate and hcreate_r.
+    Closes: #812441.
+  * Fix CVE-2015-8779: Multiple unbounded stack allocations in catopen().
+    Closes: #812455.
+
+ -- Santiago Ruano Rincón <santiagorr@riseup.net>  Thu, 04 Feb 2016 20:54:36 +0100
+
 eglibc (2.11.3-4+deb6u8) squeeze-lts; urgency=medium
 
   * Non-maintainer upload by the Debian LTS team.

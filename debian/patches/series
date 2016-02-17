@@ -311,3 +311,10 @@ any/submitted-CVE-2015-XXXX-Fix-_IO_wstr_overflow-integer-overflow.diff
 any/submitted-CVE-2015-XXXX-potential-application-crash-due-to-overread-in-fnmatch.diff
 any/submitted-CVE-2014-8121.diff
 any/cvs-bugzilla-16009-strxfrm-buffer-overflows.diff
+any/cvs-CVE-2014-9761-1-squeeze.patch
+any/cvs-CVE-2014-9761-2-squeeze.patch
+any/cvs-CVE-2015-8776-squeeze.patch
+any/cvs-CVE-2015-8778-1-squeeze.patch
+any/cvs-CVE-2015-8778-2-squeeze.patch
+any/cvs-CVE-2015-8779-1-squeeze.patch
+any/cvs-CVE-2015-8779-2-squeeze.patch
